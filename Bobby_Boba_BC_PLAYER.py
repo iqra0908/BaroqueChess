@@ -55,7 +55,10 @@ remark_indices = [0, 0, 0, 0] # which line we last used for each type of remark
 def makeMove(currentState, currentRemark, timelimit):
     # Compute the new state for a move.
     # This is a placeholder that just copies the current state.
+    global myPlayer
     newState = BC.BC_state(currentState.board)
+    myPlayer = currentState.whose_move
+    print(myPlayer)
 
     # Fix up whose turn it will be.
     newState.whose_move = 1 - currentState.whose_move
@@ -448,8 +451,7 @@ def capture(board, start, end, player, pieceType=None):
 
 # Assume white
 def expensive_static_eval(currentState):
-    otherPlayer = other(1)
-    myPlayer = 1
+    otherPlayer = other(myPlayer)
     moves_MyPlayer = possibleMoves(currentState, myPlayer)
     moves_OtherPlayer = possibleMoves(currentState, otherPlayer)
     myPieces = getPieces(myPlayer)
@@ -487,8 +489,7 @@ def expensive_static_eval(currentState):
 
 def static_eval(currentState):
 
-    otherPlayer = other(1)
-    myPlayer = 1
+    otherPlayer = other(myPlayer)
     myPieces = getPieces(myPlayer)
     enemyPieces = getPieces(otherPlayer)
 

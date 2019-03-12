@@ -8,7 +8,6 @@ import copy
 import math
 import random
 
-myPlayer = 0
 
 # index of pieces
 pincer = 0
